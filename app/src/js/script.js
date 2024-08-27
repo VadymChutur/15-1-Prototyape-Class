@@ -1,3 +1,4 @@
+'use strickt';
 console.log('Hello world');
 
 // const user = {
@@ -43,9 +44,49 @@ console.log('Hello world');
 // practiceOwner.showAge();
 
 class User {
-  constructor() {
-    console.log(this);
+  #location;
+  constructor({ name, email, age = 18, location = 'World', password }) {
+    this.name = name;
+    this.email = email;
+    this.age = age;
+    this.#location = location;
+    this.password = password;
+  }
+  sayHello() {
+    console.log(`Hello ${this.name}`);
+  }
+  get getLocatiton() {
+    return this.#location;
+  }
+  set getLocatiton(city) {
+    // const value = prompt('Enter password');
+    // if (value === this.password) {
+    //   this.#location = city;
+    //   console.log(this.#location);
+    // } else {
+    //   console.log('Wrong password');
+    // }
+    console.log((this.#location = city));
   }
 }
 
-const test = new User();
+const test = new User({
+  name: 'User A',
+  email: 'test@gmail.com',
+  location: 'Kyev',
+  password: 'qwerty123',
+});
+const test1 = new User({
+  name: 'User B',
+  email: 'mail@gmail.com',
+  age: 25,
+});
+console.log(test);
+console.log(test1);
+test.sayHello();
+// test.getLocation = function () {
+//   console.log(this.location);
+// };
+console.log(test);
+console.log(test.getLocatiton);
+test.getLocatiton = 'London';
