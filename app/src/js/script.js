@@ -44,20 +44,36 @@ console.log('Hello world');
 // practiceOwner.showAge();
 
 class User {
+  static counter = 0;
+  static addUser() {
+    this.counter += 1;
+    // User.counter += 1;
+    console.log(`Number of users ${this.counter}`);
+  }
+
   #location;
-  constructor({ name, email, age = 18, location = 'World', password }) {
+  constructor({
+    name,
+    email,
+    age = 18,
+    location = 'World',
+    password = '1234567',
+  }) {
     this.name = name;
     this.email = email;
     this.age = age;
     this.#location = location;
     this.password = password;
+    User.addUser();
   }
   sayHello() {
     console.log(`Hello ${this.name}`);
   }
+
   get getLocatiton() {
     return this.#location;
   }
+
   set getLocatiton(city) {
     // const value = prompt('Enter password');
     // if (value === this.password) {
@@ -70,23 +86,60 @@ class User {
   }
 }
 
-const test = new User({
+class Avatar extends User {
+  constructor({ name, email, location, age, password, damage }) {
+    super({ name, email, age, password, location });
+    this.damage = damage;
+  }
+
+  attack() {
+    console.log(`Attack with damage ${this.damage}`);
+  }
+}
+
+class Human extends User {
+  constructor({ name, email, location, age, password, speed }) {
+    super({ name, email, age, password, location });
+    this.speed = speed;
+  }
+
+  dodge() {
+    console.log(`Human dodge with ${this.speed} speed`);
+  }
+}
+
+const test = new Avatar({
   name: 'User A',
-  email: 'test@gmail.com',
-  location: 'Kyev',
-  password: 'qwerty123',
-});
-const test1 = new User({
-  name: 'User B',
   email: 'mail@gmail.com',
-  age: 25,
+  location: 'Kyev',
+  damage: 1000,
 });
+
+const test2 = new Human({
+  name: 'User A',
+  email: 'mail@gmail.com',
+  speed: 50,
+});
+// const test = new User({
+//   name: 'User A',
+//   email: 'test@gmail.com',
+//   location: 'Kyev',
+//   password: 'qwerty123',
+// });
+// const test1 = new User({
+//   name: 'User B',
+//   email: 'mail@gmail.com',
+//   age: 25,
+// });
+// console.log(test);
+// console.log(test1);
+// test.sayHello();
+// // test.getLocation = function () {
+// //   console.log(this.location);
+// // };
+// console.log(test);
+// console.log(test.getLocatiton);
+// test.getLocatiton = 'London';
+
 console.log(test);
-console.log(test1);
-test.sayHello();
-// test.getLocation = function () {
-//   console.log(this.location);
-// };
-console.log(test);
-console.log(test.getLocatiton);
-test.getLocatiton = 'London';
+console.log(test2);
