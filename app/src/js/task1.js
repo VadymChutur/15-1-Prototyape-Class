@@ -84,3 +84,17 @@ const items = storage.getItems();
 // // ~ (-0) => 0
 // // !! bool
 // console.log(!!0); //Boolean(0)
+
+const kiwi = new User({
+  login: 'Kiwi',
+  email: 'kiwi@mail.com',
+});
+
+console.log(kiwi.login);
+kiwi.login = 'Kiwidoge';
+console.log(kiwi.login);
+
+const ajax = new User({
+  login: 'Ajax',
+  email: 'ajax@mail.com',
+});
