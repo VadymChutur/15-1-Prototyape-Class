@@ -71,10 +71,16 @@ class Storage {
 
 const storage = new Storage(['🍇', '🍏', '🥝', '🍍']);
 const items = storage.getItems();
-console.table(items);
+// console.table(items);
 
-storage.addItem('🍋');
-console.table(storage.items);
+// storage.addItem('🍋');
+// console.table(storage.items);
 
-storage.removeItem('🍇');
-console.table(storage.items);
+// storage.removeItem('🍇');
+// console.table(storage.items);
+
+// // indexOf(index) => -1 || 0
+// // ~ (-1) => 1
+// // ~ (-0) => 0
+// // !! bool
+// console.log(!!0); //Boolean(0)
