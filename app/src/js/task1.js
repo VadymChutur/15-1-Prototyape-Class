@@ -131,3 +131,59 @@ const ajax = new User({
 console.log(ajax.login);
 ajax.login = 'Ajaxdoge';
 console.log(ajax.login);
+
+class Notes {
+  static Priority = {
+    LOW: 'low',
+    NORMAL: 'normal',
+    HIGH: 'high',
+  };
+  constructor(notes) {
+    this.items = notes;
+  }
+
+  addNote(note) {
+    const inArr = this.items.some(({ text }) => text === note.text);
+    if (!inArr) {
+      this.items.push(note);
+    }
+  }
+
+  removeNote(text) {
+    const idx = this.items.findIndex(({ text: noteText }) => noteText === text);
+    if (!!~idx) {
+      this.items.splice(idx, 1);
+    }
+  }
+
+  updateNote(text, newPriority) {
+    const idx = this.items.findIndex(({ text: noteText }) => noteText === text);
+    if (!!~idx) {
+      this.items[idx].priority = newPriority;
+    }
+  }
+}
+
+const myNotes = new Notes([]);
+
+myNotes.addNote({
+  text: 'My first note',
+  priority: Notes.Priority.LOW,
+});
+myNotes.addNote({
+  text: 'My first note',
+  priority: Notes.Priority.LOW,
+});
+console.log(myNotes.items);
+
+myNotes.addNote({
+  text: 'My second note',
+  priority: Notes.Priority.NORMAL,
+});
+console.log(myNotes.items);
+
+myNotes.removeNote('My first note');
+console.log(myNotes.items);
+
+myNotes.updateNote('My second note', Notes.Priority.HIGH);
+console.log(myNotes.items);
