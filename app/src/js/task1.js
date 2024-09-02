@@ -85,6 +85,35 @@ const items = storage.getItems();
 // // !! bool
 // console.log(!!0); //Boolean(0)
 
+class User {
+  #login;
+  #email;
+  constructor({ login, email }) {
+    this.#login = login;
+    this.#email = email;
+  }
+
+  get login() {
+    return this.#login;
+  }
+
+  set login(newLogin) {
+    if (this.#login !== newLogin) {
+      this.#login = newLogin;
+    }
+  }
+
+  get email() {
+    return this.#email;
+  }
+
+  set email(newEmail) {
+    if (this.#email !== newEmail) {
+      this.#email = newEmail;
+    }
+  }
+}
+
 const kiwi = new User({
   login: 'Kiwi',
   email: 'kiwi@mail.com',
@@ -98,3 +127,7 @@ const ajax = new User({
   login: 'Ajax',
   email: 'ajax@mail.com',
 });
+
+console.log(ajax.login);
+ajax.login = 'Ajaxdoge';
+console.log(ajax.login);
