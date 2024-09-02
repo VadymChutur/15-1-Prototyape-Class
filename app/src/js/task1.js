@@ -187,3 +187,10 @@ console.log(myNotes.items);
 
 myNotes.updateNote('My second note', Notes.Priority.HIGH);
 console.log(myNotes.items);
+
+const firstToggle = new ToggleEvent({ isOpen: true });
+console.group('firstToggle');
+console.log(firstToggle.on);
+firstToggle.toggle();
+console.log(firstToggle.on);
+console.groupEnd('firstToggle');
