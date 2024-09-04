@@ -87,8 +87,12 @@ class User {
 }
 
 class Avatar extends User {
-  constructor({ name, email, location, age, password, damage }) {
-    super({ name, email, age, password, location });
+  // constructor({ name, email, location, age, password, damage }) {
+  //   super({ name, email, age, password, location });
+  //   this.damage = damage;
+  // }
+  constructor({ damage, ...args }) {
+    super(args);
     this.damage = damage;
   }
 
@@ -98,8 +102,8 @@ class Avatar extends User {
 }
 
 class Human extends User {
-  constructor({ name, email, location, age, password, speed }) {
-    super({ name, email, age, password, location });
+  constructor({ speed, ...args }) {
+    super(args);
     this.speed = speed;
   }
 
@@ -116,9 +120,9 @@ const test = new Avatar({
 });
 
 const test2 = new Human({
-  name: 'User A',
-  email: 'mail@gmail.com',
-  speed: 50,
+  name: 'User B',
+  email: 'mailB@gmail.com',
+  speed: 500,
 });
 // const test = new User({
 //   name: 'User A',

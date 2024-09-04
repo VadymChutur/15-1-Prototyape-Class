@@ -1,3 +1,5 @@
+'use strict';
+
 class Blogger {
   constructor({
     name = 'Blogeger',
@@ -188,9 +190,49 @@ console.log(myNotes.items);
 myNotes.updateNote('My second note', Notes.Priority.HIGH);
 console.log(myNotes.items);
 
+class ToggleEvent {
+  constructor(isOpen = false) {
+    this.on = isOpen;
+  }
+
+  toggle() {
+    if (this.on) {
+      this.on = false;
+      return this.on;
+    } else {
+      this.on = true;
+      return this.on;
+    }
+  }
+}
+
 const firstToggle = new ToggleEvent({ isOpen: true });
 console.group('firstToggle');
+console.log(firstToggle);
 console.log(firstToggle.on);
 firstToggle.toggle();
 console.log(firstToggle.on);
+firstToggle.toggle();
+console.log(firstToggle.on);
+firstToggle.toggle();
+console.log(firstToggle.on);
+firstToggle.toggle();
+console.log(firstToggle.on);
+firstToggle.toggle();
 console.groupEnd('firstToggle');
+
+const secondToggle = new ToggleEvent();
+console.group('secondToggle');
+console.log(secondToggle);
+console.log(secondToggle.on);
+secondToggle.toggle();
+console.log(secondToggle.on);
+secondToggle.toggle();
+console.log(secondToggle.on);
+secondToggle.toggle();
+console.log(secondToggle.on);
+secondToggle.toggle();
+console.log(secondToggle.on);
+secondToggle.toggle();
+console.log(secondToggle.on);
+console.groupEnd('secondToggle');
